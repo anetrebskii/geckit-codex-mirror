@@ -1,5 +1,47 @@
-export const create = (host) => ({
-  ...host.codex,
-  id: 'plugin:codex-mirror',
-  replaces: 'codex',
-})
+const forward = (provider, method) => (...args) => provider[method](...args)
+
+export const create = (host) => {
+  const codex = host.codex
+  return {
+    id: 'plugin:codex-mirror',
+    family: 'codex',
+    replaces: 'codex',
+    name: 'Codex Mirror',
+    shortName: 'Codex Mirror',
+    icon: 'codex-mirror',
+    browser: 'codex',
+    loginCommand: 'codex login',
+    planName: 'ChatGPT',
+    available: codex.available,
+    localOnly: codex.localOnly,
+    subscriptionOnly: codex.subscriptionOnly,
+    images: codex.images,
+    remoteControl: codex.remoteControl,
+    nativeGoals: codex.nativeGoals,
+    idleMs: codex.idleMs,
+    waitForExit: codex.waitForExit,
+    account: forward(codex, 'account'),
+    program: forward(codex, 'program'),
+    models: forward(codex, 'models'),
+    limits: forward(codex, 'limits'),
+    list: forward(codex, 'list'),
+    search: forward(codex, 'search'),
+    hidden: forward(codex, 'hidden'),
+    create: forward(codex, 'create'),
+    fork: forward(codex, 'fork'),
+    has: forward(codex, 'has'),
+    read: forward(codex, 'read'),
+    links: forward(codex, 'links'),
+    goal: forward(codex, 'goal'),
+    setGoal: forward(codex, 'setGoal'),
+    clearGoal: forward(codex, 'clearGoal'),
+    hold: forward(codex, 'hold'),
+    rename: forward(codex, 'rename'),
+    remote: forward(codex, 'remote'),
+    mcp: forward(codex, 'mcp'),
+    browsers: forward(codex, 'browsers'),
+    correct: forward(codex, 'correct'),
+    delete: forward(codex, 'delete'),
+    dispose: forward(codex, 'dispose'),
+  }
+}
