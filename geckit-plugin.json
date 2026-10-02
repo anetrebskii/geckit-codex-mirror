@@ -3,8 +3,7 @@
   "entry": "index.mjs",
   "provider": {
     "id": "plugin:codex-mirror",
-    "family": "codex",
-    "replaces": "codex",
+    "family": "plugin:codex-mirror",
     "name": "Codex Mirror",
     "shortName": "Codex Mirror",
     "icon": "codex-mirror",
@@ -14,6 +13,7 @@
     "planName": "ChatGPT",
     "resumeCommand": "codex resume {id}",
     "localOnly": true,
+    "runtime": "codex",
     "source": "https://github.com/anetrebskii/geckit-codex-mirror"
   }
 }
