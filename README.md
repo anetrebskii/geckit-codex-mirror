@@ -1,6 +1,6 @@
 # Codex Mirror for GeckIt
 
-An experimental Codex provider plugin with a different name and icon. It starts as a complete editable implementation of GeckIt's provider contract, forwarding every operation to Codex.
+An experimental Codex provider plugin with a different name and icon. It starts as a complete editable implementation of GeckIt's provider contract, adapting Codex operations.
 
 In GeckIt, open Settings > Libraries and add `https://github.com/anetrebskii/geckit-codex-mirror`. Codex Mirror then appears as a separate assistant in Settings > Assistants and the chat assistant menu.
 
