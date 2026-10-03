@@ -1,29 +1,16 @@
-// src/codex-runtime.mjs
-import { createRequire as geckitCreateRequire } from "node:module";
-import { spawn } from "node:child_process";
-import { existsSync } from "node:fs";
-import { homedir as homedir2 } from "node:os";
-import { delimiter as delimiter2, join as join2 } from "node:path";
-import { createInterface } from "node:readline";
-import { homedir } from "node:os";
-import { delimiter, isAbsolute, join } from "node:path";
-import { readFile } from "node:fs/promises";
-import { homedir as homedir3, tmpdir } from "node:os";
-import { basename, join as join3 } from "node:path";
-import { isAbsolute as isAbsolute2, relative, resolve, sep } from "node:path";
-import { open, readdir, stat } from "node:fs/promises";
-import { execFile } from "node:child_process";
-var require2 = geckitCreateRequire(import.meta.url);
+// Copied from GeckIt. Editable plugin-owned implementation; no host.codex calls.
+import { createRequire as geckitCreateRequire } from 'node:module';
+const require = geckitCreateRequire(import.meta.url);
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __require = /* @__PURE__ */ ((x) => typeof require2 !== "undefined" ? require2 : typeof Proxy !== "undefined" ? new Proxy(x, {
-  get: (a, b) => (typeof require2 !== "undefined" ? require2 : a)[b]
+var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
+  get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
 }) : x)(function(x) {
-  if (typeof require2 !== "undefined") return require2.apply(this, arguments);
+  if (typeof require !== "undefined") return require.apply(this, arguments);
   throw Error('Dynamic require of "' + x + '" is not supported');
 });
 var __commonJS = (cb, mod) => function __require2() {
@@ -45,6 +32,8 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
+
+// client/node_modules/ws/lib/constants.js
 var require_constants = __commonJS({
   "client/node_modules/ws/lib/constants.js"(exports, module) {
     "use strict";
@@ -66,6 +55,8 @@ var require_constants = __commonJS({
     };
   }
 });
+
+// client/node_modules/ws/lib/buffer-util.js
 var require_buffer_util = __commonJS({
   "client/node_modules/ws/lib/buffer-util.js"(exports, module) {
     "use strict";
@@ -139,6 +130,8 @@ var require_buffer_util = __commonJS({
     }
   }
 });
+
+// client/node_modules/ws/lib/limiter.js
 var require_limiter = __commonJS({
   "client/node_modules/ws/lib/limiter.js"(exports, module) {
     "use strict";
@@ -187,6 +180,8 @@ var require_limiter = __commonJS({
     module.exports = Limiter;
   }
 });
+
+// client/node_modules/ws/lib/permessage-deflate.js
 var require_permessage_deflate = __commonJS({
   "client/node_modules/ws/lib/permessage-deflate.js"(exports, module) {
     "use strict";
@@ -568,6 +563,8 @@ var require_permessage_deflate = __commonJS({
     }
   }
 });
+
+// client/node_modules/ws/lib/validation.js
 var require_validation = __commonJS({
   "client/node_modules/ws/lib/validation.js"(exports, module) {
     "use strict";
@@ -767,6 +764,8 @@ var require_validation = __commonJS({
     }
   }
 });
+
+// client/node_modules/ws/lib/receiver.js
 var require_receiver = __commonJS({
   "client/node_modules/ws/lib/receiver.js"(exports, module) {
     "use strict";
@@ -1388,6 +1387,8 @@ var require_receiver = __commonJS({
     module.exports = Receiver2;
   }
 });
+
+// client/node_modules/ws/lib/sender.js
 var require_sender = __commonJS({
   "client/node_modules/ws/lib/sender.js"(exports, module) {
     "use strict";
@@ -1879,6 +1880,8 @@ var require_sender = __commonJS({
     }
   }
 });
+
+// client/node_modules/ws/lib/event-target.js
 var require_event_target = __commonJS({
   "client/node_modules/ws/lib/event-target.js"(exports, module) {
     "use strict";
@@ -2106,6 +2109,8 @@ var require_event_target = __commonJS({
     }
   }
 });
+
+// client/node_modules/ws/lib/extension.js
 var require_extension = __commonJS({
   "client/node_modules/ws/lib/extension.js"(exports, module) {
     "use strict";
@@ -2257,6 +2262,8 @@ var require_extension = __commonJS({
     module.exports = { format, parse };
   }
 });
+
+// client/node_modules/ws/lib/websocket.js
 var require_websocket = __commonJS({
   "client/node_modules/ws/lib/websocket.js"(exports, module) {
     "use strict";
@@ -3164,6 +3171,8 @@ var require_websocket = __commonJS({
     }
   }
 });
+
+// client/node_modules/ws/lib/stream.js
 var require_stream = __commonJS({
   "client/node_modules/ws/lib/stream.js"(exports, module) {
     "use strict";
@@ -3260,6 +3269,8 @@ var require_stream = __commonJS({
     module.exports = createWebSocketStream2;
   }
 });
+
+// client/node_modules/ws/lib/subprotocol.js
 var require_subprotocol = __commonJS({
   "client/node_modules/ws/lib/subprotocol.js"(exports, module) {
     "use strict";
@@ -3303,6 +3314,8 @@ var require_subprotocol = __commonJS({
     module.exports = { parse };
   }
 });
+
+// client/node_modules/ws/lib/websocket-server.js
 var require_websocket_server = __commonJS({
   "client/node_modules/ws/lib/websocket-server.js"(exports, module) {
     "use strict";
@@ -3702,6 +3715,15 @@ var require_websocket_server = __commonJS({
     }
   }
 });
+
+// client/src/main/sessions/codex-rpc.ts
+import { spawn } from "node:child_process";
+import { existsSync } from "node:fs";
+import { homedir as homedir2 } from "node:os";
+import { delimiter as delimiter2, join as join2 } from "node:path";
+import { createInterface } from "node:readline";
+
+// client/node_modules/ws/wrapper.mjs
 var import_stream = __toESM(require_stream(), 1);
 var import_extension = __toESM(require_extension(), 1);
 var import_permessage_deflate = __toESM(require_permessage_deflate(), 1);
@@ -3711,6 +3733,10 @@ var import_subprotocol = __toESM(require_subprotocol(), 1);
 var import_websocket = __toESM(require_websocket(), 1);
 var import_websocket_server = __toESM(require_websocket_server(), 1);
 var wrapper_default = import_websocket.default;
+
+// client/src/main/sessions/account.ts
+import { homedir } from "node:os";
+import { delimiter, isAbsolute, join } from "node:path";
 var OFF_PLAN = [
   "ANTHROPIC_API_KEY",
   "ANTHROPIC_AUTH_TOKEN",
@@ -3731,6 +3757,8 @@ function planOnly(env = process.env) {
 }
 var WINDOWS = process.platform === "win32";
 var pathKey = (env) => Object.keys(env).find((name) => name.toUpperCase() === "PATH") ?? "PATH";
+
+// client/src/main/sessions/codex-rpc.ts
 function codexEnvironment(env = process.env) {
   const kept = planOnly(env);
   for (const name of ["OPENAI_API_KEY", "CODEX_API_KEY", "OPENAI_BASE_URL", "CODEX_THREAD_ID", "CODEX_INTERNAL_ORIGINATOR_OVERRIDE"]) delete kept[name];
@@ -3845,6 +3873,8 @@ var CodexRpc = class {
     this.#child?.kill();
   }
 };
+
+// client/src/shared/links.ts
 var NAMED = /\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)/g;
 var BARE = /https?:\/\/[^\s<>"'`)\]]+/g;
 var TRAILING = /[.,;:!?]+$/;
@@ -3865,11 +3895,23 @@ function linksInText(texts) {
   }
   return [...found.values()];
 }
+
+// client/src/shared/providers.ts
 var modelVersion = (id) => {
   const match = /^(?:claude-[a-z]+-|gpt-)(\d+)(?:[-.](\d+))?(?:-|\[|$)/.exec(id);
   return match === null ? void 0 : [match[1], match[2]].filter((part) => part !== void 0).join(".");
 };
+
+// client/src/main/sessions/codex.ts
+import { readFile } from "node:fs/promises";
+import { homedir as homedir3, tmpdir } from "node:os";
+import { basename, join as join3 } from "node:path";
+
+// client/src/main/sessions/heard.ts
 var askId = (request, index) => index === 0 ? request : `${request}#${String(index)}`;
+
+// client/src/main/sessions/rule.ts
+import { isAbsolute as isAbsolute2, relative, resolve, sep } from "node:path";
 function within(root, path) {
   if (path === "") return void 0;
   const inside = relative(root, resolve(root, path));
@@ -3884,6 +3926,8 @@ function filesAmong(root, paths) {
   }
   return found;
 }
+
+// client/src/main/sessions/codex-read.ts
 function codexItem(item, root, live = false) {
   const id = `codex:${item.id}`;
   switch (item.type) {
@@ -3921,6 +3965,8 @@ ${change.diff}`).join("\n\n"), ...live ? { live: true } : {} }, ...!live && item
 function codexHistory(turns, root) {
   return turns.flatMap((turn) => turn.items.flatMap((item) => codexItem(item, root).map((one) => one.kind === "mine" && turn.startedAt != null ? { ...one, at: turn.startedAt * 1e3 } : one)));
 }
+
+// client/src/main/sessions/codex-protocol.ts
 function codexOptions(root, mode, model) {
   return {
     cwd: root,
@@ -3931,6 +3977,8 @@ function codexOptions(root, mode, model) {
     sandbox: mode === "plan" ? "read-only" : "workspace-write"
   };
 }
+
+// client/src/main/sessions/wording.ts
 function firstLine(said, most = 120) {
   const line = said.split("\n").map((one) => one.trim()).find((one) => one !== "") ?? "";
   return line.length > most ? `${line.slice(0, most - 1).trimEnd()}...` : line;
@@ -3938,6 +3986,11 @@ function firstLine(said, most = 120) {
 function plain(said) {
   return said.replace(/^\s*(```|~~~).*$/gm, "").replace(/!?\[([^\]]*)\]\([^)]*\)/g, "$1").replace(/\*\*|__|~~|`/g, "").replace(/^\s*(#{1,6}|>|[-*+]|\d+[.)])\s+(\[[ xX]\]\s+)?/gm, "");
 }
+
+// client/src/main/sessions/search.ts
+import { open, readdir, stat } from "node:fs/promises";
+
+// client/src/main/sessions/claude-read.ts
 var string = (value) => typeof value === "string" ? value : "";
 var object = (value) => typeof value === "object" && value !== null && !Array.isArray(value) ? value : {};
 var list = (value) => Array.isArray(value) ? value : [];
@@ -3949,8 +4002,12 @@ function typed(entry) {
   if (list(content).some((block) => string(object(block)["type"]) === "tool_result")) return "";
   return textsOf(content).filter((text) => !/^\s*(<|\[Request interrupted|Caveat:)/.test(text)).join("\n");
 }
+
+// client/src/main/sessions/disk.ts
 var EDGE = 64 * 1024;
 var CHUNK = 2 * 1024 * 1024;
+
+// client/src/main/sessions/search.ts
 var CHUNK2 = 4 * 1024 * 1024;
 var MOST = 50;
 var AROUND = 60;
@@ -4050,6 +4107,8 @@ function searchCodex(files, asked) {
   queue = searched.catch(() => void 0);
   return searched;
 }
+
+// client/src/main/sessions/codex.ts
 var native = (id) => id.slice("codex:".length);
 var shownGoal = (goal) => goal === null || goal.status === "complete" ? void 0 : { condition: goal.objective, checks: 0 };
 var CodexSessions = class {
@@ -4539,6 +4598,9 @@ ${JSON.stringify(request.params.permissions, null, 2)}` } });
     this.#rpc?.dispose();
   }
 };
+
+// client/src/main/sessions/codex-browsers.ts
+import { execFile } from "node:child_process";
 async function readCodexBrowsers() {
   try {
     const stdout = await new Promise((resolve2, reject) => {
@@ -4571,6 +4633,8 @@ async function readCodexBrowsers() {
     return void 0;
   }
 }
+
+// client/src/shared/provider-usage.ts
 function providerQuotas(source) {
   if (source.quotas !== void 0) return source.quotas;
   if (source.limits !== void 0) return source.limits.flatMap((limit, index) => [limit.primary, limit.secondary].flatMap((window, at) => {
@@ -4586,87 +4650,10 @@ function providerQuotas(source) {
     ...source.plan.sevenDay === void 0 ? [] : [{ id: "seven-day", name: "Week", ...source.plan.sevenDay }]
   ];
 }
-
-// src/model-overrides.mjs
-var modelOverrides = /* @__PURE__ */ new Map();
-
-// src/provider.mjs
-var family = "plugin:codex-mirror";
-var mirror = (id) => `${family}:${id.slice("codex:".length)}`;
-var native2 = (id) => {
-  if (!id.startsWith(`${family}:`)) throw new Error("Session does not belong to Codex Mirror.");
-  return `codex:${id.slice(family.length + 1)}`;
-};
-var goalShown = (goal) => ({
-  ...goal === null || goal.status === "complete" ? {} : { goal: { condition: goal.objective, checks: 0 } },
-  ...goal === null ? {} : { status: goal.status }
-});
-function create(host) {
-  let browser = "";
-  const codex = new CodexSessions(() => launchCodex(), void 0, () => browser);
-  return {
-    id: family,
-    family,
-    name: "Codex Mirror",
-    shortName: "Codex Mirror",
-    icon: "codex-mirror",
-    browser: "codex",
-    loginCommand: "codex login",
-    planName: "ChatGPT",
-    runtime: "codex",
-    available: true,
-    localOnly: true,
-    subscriptionOnly: true,
-    images: true,
-    remoteControl: false,
-    nativeGoals: true,
-    idleMs: 10 * 6e4,
-    waitForExit: true,
-    account: async () => ({ ...await codex.account(), provider: family }),
-    program: async () => (await codex.account()).program,
-    models: async () => (await codex.models())?.map((model) => ({ ...model, ...modelOverrides.get(model.id ?? model.value) })),
-    limits: async (models) => {
-      const account = await codex.account();
-      return {
-        windows: new Map(models.map((id) => [id, modelOverrides.get(id)?.contextWindow])),
-        ...account.limits === void 0 ? {} : { quotas: providerQuotas({ limits: account.limits }) }
-      };
-    },
-    list: async (roots) => (await codex.list(roots)).map((row) => ({ ...row, id: mirror(row.id), driven: false })),
-    search: async (roots, asked) => (await codex.search(roots, asked)).map((row) => ({ ...row, id: mirror(row.id) })),
-    hidden: async () => [],
-    create: async ({ root, mode, model }) => mirror(await codex.create(root, mode, model)),
-    fork: async (root, id, at, mode, model) => {
-      const point = (await codex.turns(native2(id))).findLast((turn) => turn.status !== "inProgress" && turn.startedAt !== null && turn.startedAt * 1e3 <= at)?.id;
-      return { id: mirror(await codex.create(root, mode, model, { from: native2(id), ...point === void 0 ? {} : { at: point } })), begun: true, items: [] };
-    },
-    has: async (root, id) => await codex.read(root, native2(id)) !== void 0,
-    read: (root, id) => codex.read(root, native2(id)),
-    links: async (root, id) => linksIn((await codex.read(root, native2(id)))?.items ?? []),
-    goal: async (_root, id) => goalShown(await codex.goal(native2(id))),
-    setGoal: async (id, objective) => goalShown(await codex.setGoal(native2(id), objective)),
-    clearGoal: (id) => codex.clearGoal(native2(id)),
-    hold: (options, hear, left) => codex.hold({ ...options, id: native2(options.id) }, (heard) => hear({
-      ...heard,
-      signals: heard.signals.map((signal) => signal.kind === "started" && signal.session !== "" ? { ...signal, session: mirror(signal.session) } : signal)
-    }), left),
-    rename: async (id, name) => {
-      await codex.rename(native2(id), name);
-    },
-    remote: async () => {
-      throw new Error("Codex Mirror does not support remote control.");
-    },
-    mcp: async () => void 0,
-    browsers: async (_root, pick) => {
-      if (pick !== void 0) browser = pick;
-      return readCodexBrowsers();
-    },
-    correct: (text, instruction, model) => codex.correct(text, instruction, model),
-    setInstructions: (enabled, browserNames) => host.codex.setInstructions(enabled, browserNames),
-    delete: (_root, id) => codex.delete(native2(id)),
-    dispose: () => codex.dispose()
-  };
-}
 export {
-  create
+  CodexSessions,
+  launchCodex,
+  linksIn,
+  providerQuotas,
+  readCodexBrowsers
 };

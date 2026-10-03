@@ -14,6 +14,7 @@
     "resumeCommand": "codex resume {id}",
     "localOnly": true,
     "runtime": "codex",
+    "instructions": "codex",
     "source": "https://github.com/anetrebskii/geckit-codex-mirror"
   }
 }
